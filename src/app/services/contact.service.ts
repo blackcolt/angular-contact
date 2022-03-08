@@ -10,10 +10,12 @@ export class ContactService {
   contacts: Contact[] = [];
   constructor(){
   this.allContacts = [{
+      id: "1",
       name:"idan",
       phone: "0526651266"
     }]
     this.contacts = [{
+      id: "2",
       name:"idan",
       phone: "0526651266"
     }]
@@ -30,11 +32,7 @@ export class ContactService {
   }
   filterContact(search: string){
     this.contacts.splice(0, this.contacts.length)
-    if (search.length === 0){
-      this.contacts.push.apply(this.contacts, this.allContacts)
-    } else {
-       let filterd = this.allContacts.filter(contact => contact.name.includes(search))
-       this.contacts.push.apply(this.contacts, filterd)
-    }
+    let filterd = this.allContacts.filter(contact => contact.name.includes(search))
+    this.contacts.push.apply(this.contacts, filterd)
   }
 }
